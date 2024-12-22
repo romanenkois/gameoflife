@@ -24,6 +24,15 @@
                 Next Turn
             </button>
         </div>
+        <div class="item">
+            <button
+                class="btn"
+                @click.prevent="pauseTimer()">
+                    AutoTurn
+                    <span v-if="isTimerPaused">Start</span>
+                    <span v-if="!isTimerPaused">Pause</span>
+            </button>
+        </div>
     </div>
 </template>
 
@@ -33,6 +42,13 @@ import { defineComponent } from 'vue'
 export default defineComponent ({
     name: 'GameMenu',
     emits: ['generateNewRandomGame', 'generateNewEmptyGame', 'passNextTurn'],
+    data() {
+        return {
+            curentTick: 0,
+            maxTick: 10,
+            isTimerPaused: true
+        }
+    },
     methods: {
         generateNewRandomGame() {
             this.$emit('generateNewRandomGame')
@@ -40,18 +56,38 @@ export default defineComponent ({
         generateNewEmptyGame() {
             this.$emit('generateNewEmptyGame')
         },
+        pauseTimer() {
+            this.isTimerPaused = !this.isTimerPaused
+        },
         passNextTurn() {
             this.$emit('passNextTurn')
+        }
+    },
+    watch: {
+        isTimerPaused(oldValue, newValue) {
+            if (!newValue) {
+                setInterval(() => {
+                    this.$emit('passNextTurn')
+                }, this.maxTick)
+            }
         }
     }
 })
 </script>
 
 <style lang="scss" scoped>
+// * {
+//     outline: 1px red solid;
+// }
 .game-menu {
-    padding: 12px 42px;
+    padding: 8px 42px;
 
     display: flex;
-    gap: 42px;
+    flex-wrap: wrap;
+    gap: 8px 42px;
+
+    .btn {
+        padding: 8px;
+    }
 }
 </style>

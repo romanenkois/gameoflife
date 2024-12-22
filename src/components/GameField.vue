@@ -7,15 +7,12 @@
     }"
     >
         <div class="placeholder">
-            <p
-            class="numberOfNeighbors"
-            >{{fieldData.other.numberOfNeighbors}}</p>
+            <!-- <p class="numberOfNeighbors">{{fieldData.other.numberOfNeighbors}}</p> -->
         </div>
     </div>
 </template>
 
 <script lang="ts">
-// import { coordinates2D } from '@/shared/models/game.models';
 
 export default {
     name: 'GameField',

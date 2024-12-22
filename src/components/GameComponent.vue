@@ -30,24 +30,26 @@ export default defineComponent ({
         GameTable,
         GameMenu,
     },
-    created() {
-        // let game = new Game;
-        this.game.generateRandomGameTable(40, 20);
-        this.tableData = this.game.getGameTable()
-    },
     data() {
         return {
             game: new Game,
             tableData: [] as any[],
+            xLength: 40,
+            yLength: 80,
         }
+    },
+    created() {
+        // let game = new Game;
+        this.game.generateRandomGameTable(this.xLength, this.yLength);
+        this.tableData = this.game.getGameTable()
     },
     methods: {
         regenerateNewRandomGame() {
-            this.game.generateRandomGameTable(40, 20);
+            this.game.generateRandomGameTable(this.xLength, this.yLength);
             this.tableData = this.game.getGameTable();
         },
         regenerateNewEmptyGame() {
-            this.game.generateEmptyGameTable(40, 20);
+            this.game.generateEmptyGameTable(this.xLength, this.yLength);
             this.tableData = this.game.getGameTable();
         },
         nextTurn() {
