@@ -7,7 +7,10 @@
     }"
     >
         <div class="placeholder">
-            <!-- <p class="numberOfNeighbors">{{fieldData.other.numberOfNeighbors}}</p> -->
+            <!-- <p
+            class="numberOfNeighbors"
+            :v-if="fieldData.other.numberOfNeighbors"
+            >{{fieldData.other.numberOfNeighbors}}</p> -->
         </div>
     </div>
 </template>

@@ -67,19 +67,19 @@ export class Game {
     }
 
     // 123123123123
-    const yLength = newGameTable.length;
-    for (let y = 0; y < yLength; y++) {
-      const xLength = newGameTable[y].length;
-      for (let x = 0; x < xLength; x++) {
-        // const numberOfNeighbors = this.getCellNeighborCount([y, x], newGameTable);
-        newGameTable[y][x] = {
-          state: newGameTable[y][x].state,
-          other: {
-            numberOfNeighbors: 0
-          }
-        } 
-      }
-    }
+    // const yLength = newGameTable.length;
+    // for (let y = 0; y < yLength; y++) {
+    //   const xLength = newGameTable[y].length;
+    //   for (let x = 0; x < xLength; x++) {
+    //     // const numberOfNeighbors = this.getCellNeighborCount([y, x], newGameTable);
+    //     newGameTable[y][x] = {
+    //       state: newGameTable[y][x].state,
+    //       other: {
+    //         numberOfNeighbors: 0
+    //       }
+    //     } 
+    //   }
+    // }
 
     this.setGameTable(newGameTable);
   }
@@ -111,23 +111,23 @@ export class Game {
               cellData.other.numberOfNeighbors = numberOfNeighbors;
             }
             else {
-              cellData.other = cellData.other || {};
-              cellData.other.numberOfNeighbors = numberOfNeighbors;
+              // cellData.other = cellData.other || {};
+              // cellData.other.numberOfNeighbors = numberOfNeighbors;
             }
             break;
           case 1:
             if (numberOfNeighbors < 2) {
               cellData.state = 0;
-              cellData.other = cellData.other || {};
-              cellData.other.numberOfNeighbors = numberOfNeighbors;
+              // cellData.other = cellData.other || {};
+              // cellData.other.numberOfNeighbors = numberOfNeighbors;
             } else if (numberOfNeighbors == 2 || numberOfNeighbors == 3 ) {
               cellData.state = 1;
-              cellData.other = cellData.other || {};
-              cellData.other.numberOfNeighbors = numberOfNeighbors;
+              // cellData.other = cellData.other || {};
+              // cellData.other.numberOfNeighbors = numberOfNeighbors;
             } else if (numberOfNeighbors > 3) {
               cellData.state = 0;
-              cellData.other = cellData.other || {};
-              cellData.other.numberOfNeighbors = numberOfNeighbors;
+              // cellData.other = cellData.other || {};
+              // cellData.other.numberOfNeighbors = numberOfNeighbors;
             }
             break;
           default:

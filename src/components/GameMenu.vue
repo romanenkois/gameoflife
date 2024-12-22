@@ -45,7 +45,7 @@ export default defineComponent ({
     data() {
         return {
             curentTick: 0,
-            maxTick: 10,
+            maxTick: 100,
             isTimerPaused: true
         }
     },
@@ -64,10 +64,13 @@ export default defineComponent ({
         }
     },
     watch: {
-        isTimerPaused(oldValue, newValue) {
-            if (!newValue) {
+        isTimerPaused() {
+            if (!this.isTimerPaused) {
                 setInterval(() => {
-                    this.$emit('passNextTurn')
+                    if (!this.isTimerPaused) {
+                        this.$emit('passNextTurn')
+                    }
+                    console.log('tick')
                 }, this.maxTick)
             }
         }

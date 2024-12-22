@@ -59,6 +59,9 @@ export default defineComponent ({
         changeFieldState(coordinates: [number, number]) {
             this.game.changeFieldState(coordinates);
         }
+    },
+    unmounted() {
+        (this.game as any) = null;
     }
 })
 </script>
