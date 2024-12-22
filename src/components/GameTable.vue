@@ -3,7 +3,11 @@
         <table cellspacing="0" cellpadding="0">
             <tr v-for="(row, rowIndex) in tableData" :key="rowIndex">
                 <td v-for="(field, fieldIndex) in row" :key="fieldIndex">
-                    <GameField :field-data="field"/>
+                    <GameField 
+                        :field-coordinates="[rowIndex, fieldIndex]"
+                        :field-data="field"
+                        @click.prevent="fieldClicked([rowIndex, fieldIndex])"
+                        />
                 </td>
             </tr>
         </table>
@@ -13,10 +17,6 @@
 <script lang="ts">
 import GameField from './GameField.vue';
 
-(()=>{
-    console.log('GameTable component loaded');
-})();
-
 export default {
     name: 'GameTable',
     components: {
@@ -24,8 +24,14 @@ export default {
     },
     props: {
         tableData: {
-            type: Array,
-            required: true
+            // type: Array,
+            // required: true
+        }
+    },
+    emits: ['fieldClicked'],
+    methods: {
+        fieldClicked(coordinates: [number, number]) {
+            (this as any).$emit('fieldClicked', coordinates);
         }
     }
 }
